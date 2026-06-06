@@ -1,0 +1,19 @@
+{
+  "name": "ai-pr-review",
+  "version": "1.0.0",
+  "description": "AI-powered pull request code review — supports OpenAI/Anthropic compatible APIs",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "ncc build src/index.js -o dist",
+    "start": "node src/index.js"
+  },
+  "keywords": ["github-action", "code-review", "ai", "pull-request"],
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "@actions/github": "^6.0.0"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.38.3"
+  }
+}

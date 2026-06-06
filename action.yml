@@ -1,0 +1,53 @@
+name: "AI PR Review"
+description: "AI-powered pull request code review. Works with any OpenAI/Anthropic-compatible API."
+branding:
+  icon: "check-circle"
+  color: "purple"
+
+inputs:
+  api_key:
+    description: "API key"
+    required: true
+  provider:
+    description: "Preset provider: minimax | deepseek | openai | anthropic | groq | zhipu | moonshot | deepseek_ocr. Automatically sets api_base and api_format (can be overridden)."
+    required: false
+    default: ""
+  api_base:
+    description: "API base URL. Required if provider is not set. Overrides provider default if set."
+    required: false
+    default: ""
+  api_format:
+    description: "API format: openai | anthropic. Default auto-detected from provider."
+    required: false
+    default: ""
+  model:
+    description: "Model name (e.g. MiniMax-M3, deepseek-v4-flash, gpt-5.5, claude-opus-4-8, meta-llama/llama-4-maverick-17b-128e-instruct, glm-5.1, kimi-k2.6)"
+    required: true
+  system_prompt:
+    description: "Custom system prompt for the AI reviewer"
+    required: false
+    default: "You are an expert code reviewer. Review the provided code changes and give clear, actionable feedback. Be concise and constructive. If the code looks good, say so honestly."
+  reviewer_name:
+    description: "Name shown in the review comment header"
+    required: false
+    default: "AI Code Review"
+  exclude_patterns:
+    description: "Comma-separated file patterns to exclude from review"
+    required: false
+    default: "*.lock,package-lock.json,yarn.lock,pnpm-lock.yaml,*.min.js,*.min.css,*.map"
+  max_diff_chars:
+    description: "Maximum total characters for the diff (0 = unlimited)"
+    required: false
+    default: "0"
+  max_tokens:
+    description: "Maximum tokens for the API response"
+    required: false
+    default: "4096"
+  github_token:
+    description: "GitHub token for API access"
+    required: false
+    default: "${{ github.token }}"
+
+runs:
+  using: "node20"
+  main: "dist/index.js"
