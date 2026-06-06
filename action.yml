@@ -21,8 +21,9 @@ inputs:
     required: false
     default: ""
   model:
-    description: "Model name (e.g. MiniMax-M3, deepseek-v4-flash, gpt-5.5, claude-opus-4-8, meta-llama/llama-4-maverick-17b-128e-instruct, glm-5.1, kimi-k2.6)"
-    required: true
+    description: "Model name. Auto-filled from provider preset if not set. Required if provider is not set."
+    required: false
+    default: ""
   system_prompt:
     description: "Custom system prompt for the AI reviewer"
     required: false
