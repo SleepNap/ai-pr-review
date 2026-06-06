@@ -111,16 +111,16 @@ async function run() {
       const p = PRESETS[provider];
       apiBase = apiBaseInput || p.base;
       apiFormat = apiFormatInput || p.format;
+      model = modelInput || p.model;
     } else if (provider) {
       throw new Error(`Unknown provider: ${provider}. Available: ${Object.keys(PRESETS).join(", ")}`);
     } else {
-      // 无 provider，必须显式提供 api_base
       if (!apiBaseInput) throw new Error("Either provider or api_base is required");
       apiBase = apiBaseInput;
       apiFormat = apiFormatInput || "openai";
+      model = modelInput;
     }
 
-    model = modelInput;
     if (!model) throw new Error("model is required");
 
     if (!["openai", "anthropic"].includes(apiFormat)) {
