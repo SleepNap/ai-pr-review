@@ -1,4 +1,4 @@
-name: "AI PR Review"
+name: "SleepNap AI PR Review"
 description: "AI-powered pull request code review. Works with any OpenAI/Anthropic-compatible API."
 branding:
   icon: "check-circle"
